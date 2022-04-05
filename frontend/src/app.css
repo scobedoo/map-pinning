@@ -1,0 +1,78 @@
+.card {
+  width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+}
+label {
+  color: #ff4010;
+  border-bottom: 1px solid #ff4010;
+  max-width: fit-content;
+  margin-bottom: 8px;
+}
+.place {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.desc {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.stars-icon {
+  color: #ffe600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.username {
+  font-size: 12px;
+  color: #6b6a7a;
+}
+.date {
+  font-size: 12px;
+  color: #6b6a7a;
+}
+form {
+  width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+input,
+textarea {
+  margin-bottom: 16px;
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+}
+input::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+  font-weight: 300;
+  color: #6b6a7a;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-bottom: 1px solid #ff4010;
+  transition: ease-in 0.2s;
+}
+select {
+  margin-bottom: 12px;
+}
+.btn-submit {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4010;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  background-color: #df3a10;
+  color: #fff;
+  transition: ease-in 0.1s;
+}
