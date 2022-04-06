@@ -95,14 +95,14 @@ select {
 .login {
   background-color: transparent;
   border: 1.5px solid #ff4010;
-  color: #ff4010;
+  color: #ff5c34;
   margin-right: 20px;
 }
 .register {
   background-color: #ff4010;
 }
 .logout {
-  background-color: #f11818;
+  background-color: #ff2c2c;
 }
 .login:hover {
   background-color: #ff4010;
