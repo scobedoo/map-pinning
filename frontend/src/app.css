@@ -76,3 +76,44 @@ select {
   color: #fff;
   transition: ease-in 0.1s;
 }
+.wrapper-button {
+  margin: 16px;
+  padding: 16px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.button {
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.login {
+  background-color: transparent;
+  border: 1.5px solid #ff4010;
+  color: #ff4010;
+  margin-right: 20px;
+}
+.register {
+  background-color: #ff4010;
+}
+.logout {
+  background-color: #f11818;
+}
+.login:hover {
+  background-color: #ff4010;
+  color: #fff;
+  transition: ease-in 0.1s;
+}
+.register:hover {
+  background-color: #df3a11;
+  transition: ease-in 0.1s;
+}
+.logout:hover {
+  background-color: #d01515;
+  transition: ease-in 0.1s;
+}

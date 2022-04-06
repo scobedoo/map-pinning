@@ -17,4 +17,10 @@ export default {
   addPin(pins) {
     return instance.post("/pins", pins);
   },
+  register(user) {
+    return instance.post("/users/register", user);
+  },
+  login(user) {
+    return instance.post("/users/login", user);
+  },
 };

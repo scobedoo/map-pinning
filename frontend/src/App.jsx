@@ -5,9 +5,12 @@ import "./app.css";
 import { useState, useEffect } from "react";
 import { format } from "timeago.js";
 import mapService from "./services/mapService";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
 
 function App() {
-  const currentUser = "Scobedo";
+  const myStorage = window.localStorage;
+  const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [viewport, setViewport] = useState({
     latitude: 37.8,
     longitude: -121.7,
@@ -20,6 +23,9 @@ function App() {
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [rating, setRating] = useState(0);
+
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     const getPins = async () => {
@@ -69,6 +75,12 @@ function App() {
       console.log(error);
     }
   };
+
+  const handleLogout = () => {
+    myStorage.removeItem("user");
+    setCurrentUser(null);
+  };
+
   return (
     <div className="App">
       <Map
@@ -76,6 +88,7 @@ function App() {
         onMove={(e) => setViewport(e.viewState)}
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
+        // mapStyle="mapbox://styles/scobedo/cl1nrdf3m000414p6q22y4k92"
         mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
         onDblClick={handleAddClick}
       >
@@ -107,11 +120,11 @@ function App() {
                   <p className="desc">{pin.desc}</p>
                   <label>Rating</label>
                   <div className="stars-icon">
-                    <Star />
-                    <Star />
-                    <Star />
-                    <Star />
-                    <Star />
+                    {Array(pin.rating)
+                      .fill()
+                      .map((_, i) => (
+                        <Star key={i} />
+                      ))}
                   </div>
                   <label>Information</label>
                   <span className="username">
@@ -160,6 +173,33 @@ function App() {
           </Popup>
         )}
       </Map>
+      {currentUser ? (
+        <div className="wrapper-button">
+          <button className="button logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div className="wrapper-button">
+          <button className="button login" onClick={() => setShowLogin(true)}>
+            Login
+          </button>
+          <button
+            className="button register"
+            onClick={() => setShowRegister(true)}
+          >
+            Register
+          </button>
+        </div>
+      )}
+      {showRegister && <Register setShowRegister={setShowRegister} />}
+      {showLogin && (
+        <Login
+          setShowLogin={setShowLogin}
+          myStorage={myStorage}
+          setCurrentUser={setCurrentUser}
+        />
+      )}
     </div>
   );
 }
